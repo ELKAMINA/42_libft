@@ -9,6 +9,6 @@
  12                 new_str[i] = c;
  13                 i ++;
  14         }
- 15         return (new_str);
+ 15         return (str);
  16 }
 

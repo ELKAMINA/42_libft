@@ -4,9 +4,9 @@
 void	*ft_memset(void *str, int c, size_t n)
 {
 	size_t	i;
-	unsigned char *new_str;
+	unsigned int *new_str;
 	
-	new_str = (unsigned  char *)str;
+	new_str = (unsigned  int *)str;
 	i = 0;
 	while(new_str[i] && i < n)
 	{
@@ -18,8 +18,8 @@ void	*ft_memset(void *str, int c, size_t n)
 
 int	main()
 {
-	char str[]="Je suis hamida";
-	printf("%s je suis la vraie", (char *)memset(str, '$', 4));
+	int str= 1600;
+	printf("%d je suis la vraie", (int	*)memset(str, 6, 4));
 	//printf("%s je suis la fausse ", (char *)ft_memset(str, '&', 4));
 }	
 
