@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include <bsd/string.h>
+# include <string.h>
 
 typedef	struct	s_list
 {

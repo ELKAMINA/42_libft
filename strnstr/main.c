@@ -1,44 +1,56 @@
 #include "../libft.h"
 
+size_t	ft_strlen(const	char	*str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i])
+		i++;
+	return (i);
+}
+
 char	*ft_strnstr(const	char	*big, const	char	*little, size_t len)
 {
 	char	*m;
 	char	*s;
 	size_t	i;
 	size_t	j;
-	size_t	l;
 	size_t	k;
+
+	i = 0;
+	j = 0;
+	k = 0;
 
 	m = (char	*)big;
 	s = (char	*)little;
-	k = 0;
-	i = 0;
-	j = 0;
-	while (m[i] && i < len)
+	if (*s == '\0')
+		return (m);
+	while (s[j])
 	{
-		while (s[j])
+		while (m[i] && i < len)
 		{
-			if (m[i] == s[j])
+			if (s[j] == m[i])
 			{
-				k = j;
-				i ++;
-				l ++;
+				k = i;
+				break;
 			}
-			i++;
+			else 
+			i ++;
 		}
 		j++;
+		i++;
 	}
-	if (l == ft_strlen(s))
-		return (&m[k]);
-	return (&m[k]);
+	printf("je suis K = %zu\n", k);
+	return (&m[k - (j - 1)]);
 }
 
 
 int	main()
 {
-	const char str1[]= "lolip";
-	const char str2[]= "oli";
-	printf("je suis la vraie = %s ---\n", strnstr(str1, str2, 5));
-	printf("je suis la fausse = %s ---\n", ft_strnstr(str1, str2, 5));
+	const char str1[]= "Foo Bar Baz";
+	const char str2[]= "Bar";
+	printf("je suis la vraie = %s ---\n", strnstr(str1, str2, 7));
+	printf("je suis la fausse = %s ---\n", ft_strnstr(str1, str2, 7));
 	return 0;
 }
