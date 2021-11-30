@@ -26,9 +26,9 @@ char	*ft_strnstr(const	char	*big, const	char	*little, size_t len)
 	s = (char	*)little;
 	if (*s == '\0')
 		return (m);
-	while (s[j])
+	while (s[j] )
 	{
-		while (m[i] && i < len)
+		while (m[i])
 		{
 			if (s[j] == m[i])
 			{
@@ -41,8 +41,10 @@ char	*ft_strnstr(const	char	*big, const	char	*little, size_t len)
 		j++;
 		i++;
 	}
-	printf("je suis K = %zu\n", k);
-	return (&m[k - (j - 1)]);
+	if ()
+		return (NULL);
+	else
+		return (&m[k - (j - 1)]);
 }
 
 
@@ -50,7 +52,7 @@ int	main()
 {
 	const char str1[]= "Foo Bar Baz";
 	const char str2[]= "Bar";
-	printf("je suis la vraie = %s ---\n", strnstr(str1, str2, 7));
-	printf("je suis la fausse = %s ---\n", ft_strnstr(str1, str2, 7));
+	printf("je suis la vraie = %s ---\n", strnstr(str1, str2, 3));
+	printf("je suis la fausse = %s ---\n", ft_strnstr(str1, str2, 3));
 	return 0;
 }
