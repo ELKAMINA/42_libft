@@ -11,38 +11,38 @@ size_t  ft_strlen (const char	*str)
 }
 // Ma fonction vide la source donc faudra utiliser strlcpy
 
-size_t	ft_strlcat(char	*dest, const	char *src, size_t size)
+/*size_t	ft_strlcat(char	*dest, const	char *src, size_t size)
 {
 	size_t	i;
-	size_t	destlen;
 	size_t	reste;
+	size_t	d_len;
 
 	i = 0;
-	destlen = ft_strlen(dest);
-	reste = ((size - 1) - destlen);
-	if (size > destlen)
+	printf("sizeof dest aka newstr from ft_strlcat = %lu---------\n", sizeof(int));
+	d_len = ft_strlen(dest);
+	reste = ((size - 1) - d_len);
+	//printf("reste = %lu ----\n", reste);
+	if (size <= sizeof(dest))
 	{
 		while (src[i] && i < reste)
 		{
-			dest[destlen] = src[i];
+			dest[d_len] = src[i];
 			i ++;
-			destlen ++;
+			d_len ++;
 		}
-		dest[destlen] = '\0';
+		dest[d_len] = '\0';
+		//printf("dlen = %lu", d_len);
+		return (d_len + ft_strlen(src));
 	}
-	printf("length of dst = %ld", destlen);
-	return (destlen + ft_strlen(src));
+	return (0);
 }
+*/
 
 int	main ()
 {
-	//char	src[]="Je suis la";
-	//char	dest[]="Hello";
-	char	str[]="Je suis la";
-	char	destin[]="Hello";
-	//printf("Vraie fonction =  %ld ----\n", strlcat(dest, src, 7));
-	//printf("dest apres vraie fonction= src = %s, dest = %s ----\n",src, dest);
-	printf("Ma fonction =  %ld ----\n", ft_strlcat(destin, str, 7));
-	printf("dest apres MA fonction= src = %s,  dest = %s ----\n",str , destin);
+	char	oldstr[] = "ABCD";
+	char	newstr[] = "1234";
 
+	printf("Résultat strlcat= %lu----- \n", strlcat(newstr, oldstr, 9));
+	printf("dest= %s\n,src = %s\n", newstr, oldstr);
 }
