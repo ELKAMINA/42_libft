@@ -4,15 +4,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-//# include <bsd/string.h>
-# include <string.h>
+# include <bsd/string.h>
+//# include <string.h>
 
-#if defined __GNU_LIBRARY__ || defined __GLIBC__
-
-    size_t strlcpy(char *, char const *, size_t);
-    size_t strlcat(char *, char const *, size_t);
-
-#endif
 
 typedef	struct	s_list
 {

@@ -1,6 +1,5 @@
 #include "../libft.h"
-
-size_t  ft_strlen (const char	*str)
+ size_t  ft_strlen (const char	*str)
 {
         size_t i;
 
@@ -11,38 +10,41 @@ size_t  ft_strlen (const char	*str)
 }
 // Ma fonction vide la source donc faudra utiliser strlcpy
 
-/*size_t	ft_strlcat(char	*dest, const	char *src, size_t size)
+size_t	ft_strlcat(char	*dest, const	char *src, size_t size)
 {
-	size_t	i;
-	size_t	reste;
-	size_t	d_len;
+	int	d_len;
+	int	s_len;
+	int	gap;
+	int	i;
+	int	offset;
 
-	i = 0;
-	printf("sizeof dest aka newstr from ft_strlcat = %lu---------\n", sizeof(int));
 	d_len = ft_strlen(dest);
-	reste = ((size - 1) - d_len);
-	//printf("reste = %lu ----\n", reste);
-	if (size <= sizeof(dest))
-	{
-		while (src[i] && i < reste)
-		{
-			dest[d_len] = src[i];
-			i ++;
-			d_len ++;
-		}
-		dest[d_len] = '\0';
-		//printf("dlen = %lu", d_len);
-		return (d_len + ft_strlen(src));
-	}
-	return (0);
+	s_len = ft_strlen(src);
+	offset = d_len;
+	gap = size - (offset + 1);
+	i = 0;
+	while (gap >= 1 && src[i])
+	{	
+		dest[offset] = src[i];
+		i ++;
+		gap --;
+		offset++;
+	 }
+	dest[offset] = '\0';	
+	if (gap  >= 0)
+		return (d_len + s_len);
+	else
+		return (size + s_len);
 }
-*/
 
 int	main ()
 {
-	char	oldstr[] = "ABCD";
-	char	newstr[] = "1234";
+	//char	dest[] = "Hellocava";
+	//char	src[] = "bienet";
+	char    dest[] = "ABCDEFGH";
+    	char    src[] = "1234";
 
-	printf("Résultat strlcat= %lu----- \n", strlcat(newstr, oldstr, 9));
-	printf("dest= %s\n,src = %s\n", newstr, oldstr);
+	//printf("Résultat strlcat= %lu----- \n", strlcat(dest, src, 4));
+	printf("Résultat ft_strlcat= %lu----- \n", ft_strlcat(dest, src, 11));
+	printf("dest= %s\n,src = %s =========\n", dest, src);
 }
