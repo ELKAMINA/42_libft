@@ -1,15 +1,5 @@
 #include "../libft.h"
 
-size_t  ft_strlen (const char* str)
-{
-        size_t i;
-
-        i = 0;
-        while(str[i])
-         i++;
-        return i;
-}
-
 char	*ft_strjoin(char	const *s1, char const	*s2)
 {
 	char	*conc;
@@ -35,12 +25,3 @@ char	*ft_strjoin(char	const *s1, char const	*s2)
 	conc[j] = '\0';
 	return (conc);
 }
-
-int     main()
-{
-        char    str1[] = "HELLO";
-        char    str2[] = "CAVA";
-
-        printf("Test = %s ----\n", ft_strjoin(str1, str2));
-}
-
