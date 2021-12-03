@@ -1,5 +1,4 @@
 #include "../libft.h"
-// je compare l debut et la fin de la chaine et je recupere le milieu de la chaine
 
 size_t  ft_strlen (const char   *str)
 {
@@ -10,8 +9,6 @@ size_t  ft_strlen (const char   *str)
          i++;
         return i;
 }
-
-//compare le debut de la chaine avec set
 
 int	ft_strnccmp(const char	*s1, const char 	*s2, size_t n)
 {
@@ -26,8 +23,6 @@ int	ft_strnccmp(const char	*s1, const char 	*s2, size_t n)
 	}
 	return (0);
 }
-
-//compare la fin de chaine
 
 int	ft_strcmprev(const char	*s1, const char 	*s2)
 {
@@ -46,23 +41,6 @@ int	ft_strcmprev(const char	*s1, const char 	*s2)
 	}
 	return (0);
 }
-
-/*int	getnuset(char const *s1, char const *set)
-{
-	int	i;
-int	j;
-
-	i = 0;
-	j = 0;
-	 while (s1[j])
-        {
-			if (s1[j] == set[0])
-				i++;
-			j++;
-        }
-	return (i);
-}
-*/
 
 char	*ft_strtrim(char        const *s1, char const   *set)
 {
@@ -89,11 +67,3 @@ char	*ft_strtrim(char        const *s1, char const   *set)
 	else 
 		return (NULL);
 }
-
-int     main()
-{
-        char    str1[] = "??HELLO??  //";
-
-        printf("Test=%s----\n", ft_strtrim(str1, "??  //"));
-}
-
