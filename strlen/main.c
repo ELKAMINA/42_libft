@@ -16,7 +16,7 @@ int main()
 {
 	char *str="JE suis amina";
         printf("%ld ft\n", ft_strlen(str));
-        printf("%ld vraie", strlen(str));
+        printf("%ld vraie", strlen(100));
 
 }
 
