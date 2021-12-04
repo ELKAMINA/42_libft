@@ -1,69 +1,55 @@
 #include "../libft.h"
 
-size_t  ft_strlen (const char   *str)
+unsigned int	is_inmyset(char	a, char	*set)
 {
-        size_t i;
-
-        i = 0;
-        while(str[i])
-         i++;
-        return i;
-}
-
-int	ft_strnccmp(const char	*s1, const char 	*s2, size_t n)
-{
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
+	while (set[i])
 	{
-		if (s1[i] != s2[i])
+		if (a == set[i])
 			return (1);
-		i ++;
+		i++;
 	}
-	return (0);
+	return(0);
 }
 
-int	ft_strcmprev(const char	*s1, const char 	*s2)
+unsigned int	starting(char	*str, char	*set)
 {
-	int	ind_s1;
-	int	 ind_s2;
+	unsigned int	i;
 
-	ind_s1 =  ft_strlen(s1) - 1;
-	ind_s2 =  ft_strlen(s2) - 1;
-	
-	while ((s1[ind_s1] && s2[ind_s2]) &&  ind_s2 >= 0 )
+	i = 0;
+	while (str[i])
 	{
-		if (s1[ind_s1] != s2[ind_s2])
-			return (1);
-		ind_s1--;
-		ind_s2--;
+		if (is_inmyset(str[i], set) == 0)
+			break;
+		i++;
 	}
-	return (0);
+	return (i);
 }
 
-char	*ft_strtrim(char        const *s1, char const   *set)
+unsigned int	finishing(char	*str, char	*set)
 {
-	 char    *conc;
-	 size_t	j;
-	 size_t len_set;
+	unsigned int	len;
 
-	j = 0;
-	len_set =  ft_strlen(set);
-	if (ft_strnccmp(s1, set, len_set) == 0 && ft_strcmprev(s1, set) == 0)
+	len = ft_strlen(str) - 1;
+	while (str[len])
 	{
-		conc = (char	*)malloc((ft_strlen(s1) - (len_set*2)) * 
-			sizeof (char)) + 1;
-		if    (conc == NULL)
-		      return NULL;
-		while (s1[j] && j < (ft_strlen(s1) - (ft_strlen(set)*2))) 
-		{
-			conc[j] = s1[len_set];
-            j++;
-            len_set++;
-		}
-	return (conc);
+		if (is_inmyset(str[len], set) == 0)
+			break;
+		len --;
 	}
-	else 
-		return (NULL);
+	return (len);
+}
+
+char	*ft_strtrim(char const	*s1, char const	*set)
+{
+	unsigned int	start;
+	unsigned int	end;
+	char	*newstr;
+
+	start = starting((char *)s1, (char *)set);
+	end = finishing((char *)s1, (char *)set);
+	newstr = ft_substr(s1, start, ((end - start) + 1));
+	return (newstr);
 }
