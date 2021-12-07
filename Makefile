@@ -1,4 +1,4 @@
-CC = gcc
+CC = gcc -c -Wall -Werror -Wextra
 
 NAME = libft.a
 
@@ -9,34 +9,32 @@ ft_toupper.c ft_calloc.c ft_memchr.c ft_putstr_fd.c ft_strmapi.c ft_isalnum.c\
 ft_memcmp.c ft_split.c ft_strncmp.c ft_isalpha.c ft_memcpy.c ft_strchr.c\
 ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c
 
-OBJ = $(SRC: .c=.o)
+OBJ = $(SRC:.c=.o)
 
 BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\
 		ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-OBJBONUS = $(BONUS: .c=.o)
+OBJBONUS = $(BONUS:.c=.o)
 
-CFLAGS += -Wall -Werror -Wextra
 
 all : $(NAME)
 
-%.o : %.c
-	$(CC) -o $@ -c $<
+##%.o : %.c
+##	$(CC) -o $@ -c $<
 
 $(NAME) : $(OBJ)
-	$(CC) -o $@ $^
 	ar -rcs $(NAME) $(OBJ)
 
 bonus : $(OBJBONUS)
 	$(CC) -o $@ $^
 	ar -rcs $(NAME) $(OBJBONUS)
 
-clean : clean
+clean :
 	rm -rf $(OBJ)
 
 fclean: clean
-	 rm -f $(OBJ)
+	 rm -f $(NAME)
 
-	re:     fclean all
+re:     fclean all
 
 .PHONY : all clean bonus fclean re
