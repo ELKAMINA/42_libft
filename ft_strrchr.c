@@ -6,7 +6,7 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:37:26 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/06 17:38:52 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/07 19:32:08 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ char	*ft_strrchr(const char *s, int c)
 {
 	char			*sent;
 	unsigned char	character;
-	int				i;
+	size_t			i;
 	int				j;
 
 	sent = (char *)s;
 	character = (unsigned char)c;
 	i = 0;
 	j = -1;
-	while (sent[i])
+	while (i <= ft_strlen(s))
 	{
 		if (sent[i] != character)
 			i++;

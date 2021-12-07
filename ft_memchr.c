@@ -6,7 +6,7 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:09:15 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/06 16:38:14 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/07 18:57:53 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	*ft_memchr(const void *memoryblock, int searchedChar, size_t size)
 
 	data = (unsigned char *)memoryblock;
 	i = 0;
-	while (data[i] && i < size)
+	while (size --)
 	{
-		if (data[i] == searchedChar)
+		if (data[i] == (unsigned char)searchedChar)
 			return (&data[i]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:23:41 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/06 17:27:04 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/07 21:03:16 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int	d_len;
-	int	s_len;
-	int	gap;
-	int	i;
-	int	offset;
+	int		d_len;
+	int		s_len;
+	int		gap;
+	size_t	i;
+	size_t	offset;
 
 	d_len = ft_strlen(dest);
 	s_len = ft_strlen(src);
 	offset = d_len;
 	gap = size - (offset + 1);
 	i = 0;
-	while (gap >= 1 && src[i])
+	if (size < 1)
+		return (s_len + size);
+	while (gap >= 1 && src[i] && i < (size - 1))
 	{
 		dest[offset] = src[i];
 		i ++;

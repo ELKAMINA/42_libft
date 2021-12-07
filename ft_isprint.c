@@ -6,15 +6,15 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:31:47 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/07 14:43:48 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:20:17 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_isprint(int c)
 {
-	if ((c >= 0 && c < 33) || c == 127)
-		return (0);
-	else
+	if (c >= ' ' && c <= '~')
 		return (1);
+	else
+		return (0);
 }
