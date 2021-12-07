@@ -6,13 +6,27 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:00:54 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/06 17:15:35 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/07 12:15:47 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_words(char const *s, char c)
+static char	**ft_malloc_error(char **tab)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i ++;
+	}
+	free(tab);
+	return (NULL);
+}
+
+static int	count_words(char const *s, char c)
 {
 	long unsigned int	i;
 	long unsigned int	j;
@@ -28,7 +42,7 @@ int	count_words(char const *s, char c)
 	return (j);
 }
 
-int	is_mychar(char c, char s)
+static int	is_mychar(char c, char s)
 {
 	if (c == s)
 		return (1);
@@ -36,7 +50,7 @@ int	is_mychar(char c, char s)
 		return (0);
 }
 
-char	*to_malloc(char const *str, char c)
+static char	*to_malloc(char const *str, char c)
 {
 	char	*word;
 	int		i;
@@ -74,15 +88,9 @@ char	**ft_split(char const *s, char c)
 			i++;
 		if (s[i] && !is_mychar(s[i], c))
 		{
-			tab[j] = to_malloc((s + i), c);
+			tab[j++] = to_malloc((s + i), c);
 			if (tab[j] == NULL)
-			{
-				while (j--)
-					free(tab[j]);
-				free(tab);
-				return (NULL);
-			}
-			j++;
+				return (ft_malloc_error(&tab[j]));
 		}
 		while (s[i] && !(is_mychar(s[i], c)))
 			i++;

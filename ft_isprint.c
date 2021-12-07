@@ -6,14 +6,14 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:31:47 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/06 16:33:19 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/07 14:43:48 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_isprint(int character)
+int	ft_isprint(int c)
 {
-	if ((character >= 0 && character < 33) || character == 127)
+	if ((c >= 0 && c < 33) || c == 127)
 		return (0);
 	else
 		return (1);
