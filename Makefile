@@ -25,13 +25,11 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	$(CC) -o $@ $^
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	ar -rcs $(NAME) $(OBJ)
 
 bonus : $(OBJBONUS)
 	$(CC) -o $@ $^
-	ar rc $(NAME) $(OBJBONUS)
-	ranlib $(NAME)
+	ar -rcs $(NAME) $(OBJBONUS)
 
 clean : clean
 	rm -rf $(OBJ)
@@ -39,6 +37,6 @@ clean : clean
 fclean: clean
 	 rm -f $(OBJ)
 
-re:     fclean all
+	re:     fclean all
 
-
+.PHONY : all clean bonus fclean re
