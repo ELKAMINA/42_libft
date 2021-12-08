@@ -6,37 +6,33 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:00:54 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/07 12:15:47 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:52:51 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_malloc_error(char **tab)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i ++;
-	}
-	free(tab);
-	return (NULL);
-}
-
 static int	count_words(char const *s, char c)
 {
-	long unsigned int	i;
-	long unsigned int	j;
+	int	i;
+	int	j;
 
-	i = 0;
 	j = 1;
+	i = 0;
+	if (!s)
+		return (0);
+	if (s[0] == c)
+		j = 0;
 	while (s[i] && c != '\0')
 	{
 		if (s[i] == c)
-			j++;
+		{
+			j ++;
+			while (s[i] == c)
+				i++;
+			if (!s[i])
+				return (j - 1);
+		}
 		i++;
 	}
 	return (j);
@@ -71,6 +67,14 @@ static char	*to_malloc(char const *str, char c)
 	return (word);
 }
 
+static char	**ft_malloc_error(char **tab, int j)
+{
+	while (j--)
+		free(tab[j]);
+	free(tab[j]);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
@@ -82,15 +86,16 @@ char	**ft_split(char const *s, char c)
 	tab = malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (tab == NULL)
 		return (NULL);
-	while (s[i])
+	while (s && s[i])
 	{
 		while (s[i] && is_mychar(s[i], c))
 			i++;
 		if (s[i] && !is_mychar(s[i], c))
 		{
-			tab[j++] = to_malloc((s + i), c);
+			tab[j] = to_malloc((s + i), c);
 			if (tab[j] == NULL)
-				return (ft_malloc_error(&tab[j]));
+				return (ft_malloc_error(&tab[j], count_words(s, c)));
+			j++;
 		}
 		while (s[i] && !(is_mychar(s[i], c)))
 			i++;

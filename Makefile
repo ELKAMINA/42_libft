@@ -16,11 +16,7 @@ BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\
 
 OBJBONUS = $(BONUS:.c=.o)
 
-
 all : $(NAME)
-
-##%.o : %.c
-##	$(CC) -o $@ -c $<
 
 $(NAME) : $(OBJ)
 	ar -rcs $(NAME) $(OBJ)

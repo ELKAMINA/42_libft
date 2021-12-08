@@ -6,15 +6,15 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:39:09 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/07 16:30:11 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/08 18:15:01 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	is_inmyset(char a, char *set)
+static int	is_inmyset(char a, char *set)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (set[i])
@@ -26,9 +26,9 @@ unsigned int	is_inmyset(char a, char *set)
 	return (0);
 }
 
-unsigned int	starting(char *str, char *set)
+static int	starting(char *str, char *set)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -40,12 +40,12 @@ unsigned int	starting(char *str, char *set)
 	return (i);
 }
 
-unsigned int	finishing(char *str, char *set)
+static int	finishing(char *str, char *set)
 {
-	unsigned int	len;
+	int	len;
 
 	len = ft_strlen(str) - 1;
-	while (str[len])
+	while (len > 0)
 	{
 		if (is_inmyset(str[len], set) == 0)
 			break ;
@@ -56,10 +56,12 @@ unsigned int	finishing(char *str, char *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned int	start;
-	unsigned int	end;
-	char			*newstr;
+	int		start;
+	int		end;
+	char	*newstr;
 
+	if (!s1 || !set)
+		return (NULL);
 	start = starting((char *)s1, (char *)set);
 	end = finishing((char *)s1, (char *)set);
 	newstr = ft_substr(s1, start, ((end - start) + 1));
