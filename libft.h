@@ -6,7 +6,7 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 18:13:24 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/07 16:55:43 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:30:43 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ size_t			ft_strlen(const char *s);
 
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
-void            ft_striteri(char *s, void (*f)(unsigned int, char*));
+void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 
